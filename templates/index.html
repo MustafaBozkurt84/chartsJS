@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <title>Document</title>
+</head>
+<style>
+    div.container {
+        border-color: red;
+        border: none;
+        width: 60%;
+        box-shadow: 1px 1px grey;
+        float: left;
+        margin-top: 20px;
+        margin-left: 10px;
+        background-color: whitesmoke;
+        border: 1px solid;
+        height: 412px;
+        border-radius: 5px;
+
+    }
+
+    div.container.one {
+
+        width: 30%;
+        float: left;
+        padding: 6px;
+        margin-left: 30px;
+        margin-top: 20px;
+
+
+    }
+div.w3-blue {
+
+    background-color:#33A2FF ;
+}
+    div.w3-blue.w3-hover-shadow.w3-padding-64.w3-center {
+
+        background-color: #33A2FF;
+        width: 20%;
+        height: 40px;
+        float: left;
+        padding: 6px;
+        margin-left: 120px;
+        margin-top: 20px;
+        box-shadow:1px black;
+        border: solid;
+        border-color: #e8e8e8;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
+</style>
+<body style="background-color: #e8e8e8 ;">
+    <ul style="background-color: grey; ">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">Charts</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li style="float:right"><a class="active" href="#about">About</a></li>
+      </ul>
+
+
+
+        <div class="container" ><canvas id="myChart3" ></canvas>
+              <script>
+var ctx = document.getElementById('myChart3').getContext('2d');
+var myChart3 = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ Shipped_Date | safe }},
+        datasets: [{
+            label: 'Sales By Date',
+            data: {{ TotalSaless | safe }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 159, 64, 0.8)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script></div>
+
+        <div class="container one" > <canvas id="myChart4" ></canvas>
+              <script>
+var ctx = document.getElementById('myChart4').getContext('2d');
+var myChart4 = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: {{ MonthlysalesMonths | safe }},
+        datasets: [{
+            label: 'Sales By Monthly',
+            data: {{ Monthlysalestotal | safe }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 159, 64, 0.8)'
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 159, 64, 0.8)'
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+        <canvas id="myChart8" ></canvas>
+              <script>
+var ctx = document.getElementById('myChart8').getContext('2d');
+var myChart4 = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: {{ Yearsales | safe }},
+        datasets: [{
+            label: 'Sales By Year',
+            data: {{ Yearsalestotal | safe }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 159, 64, 0.8)'
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 159, 64, 0.8)'
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script></div>
+    </div>
+    <div>
+        <div class="container " style= "width: 45%;" > <canvas id="myChart" ></canvas>
+            <script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ Company | safe }},
+        datasets: [{
+            label: 'Sales By Customers',
+            data: {{ TotalSales | safe }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 159, 64, 0.8)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script></div>
+        <div class="container one" style= "width: 45%;">Top 5 Products <canvas id="myChart2" ></canvas>
+
+             <script>
+var ctx = document.getElementById('myChart2').getContext('2d');
+var myChart2 = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: {{ Product_Name | safe }},
+        datasets: [{
+            label: 'Top 5 Products',
+            data: {{ Total_Units_Sold | safe }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 159, 64, 0.8)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: false
+    }
+});
+</script></div>
+    </div>
+
+</body>
+
+</html>
