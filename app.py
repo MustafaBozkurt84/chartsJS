@@ -1,23 +1,23 @@
 from flask import Flask
 from flask import render_template
-from datetime import time
+
 import os
 import numpy as np
 import pandas as pd
 import mysql.connector
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 
-connection = mysql.connector.connect(host="localhost",
+try:
+    connection = mysql.connector.connect(host="localhost",
                                    user  ="root",
                                      passwd="",
                                    db="northwind",
                                      auth_plugin='mysql_native_password')
 
-tables=pd.read_sql_query("SHOW TABLES FROM northwind",connection)
+    tables=pd.read_sql_query("SHOW TABLES FROM northwind",connection)
 
-
+except:
+    pass
 # Chart1 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try:
     salesBycompanies=pd.read_sql_query("""
