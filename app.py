@@ -148,7 +148,7 @@ except:
 app = Flask(__name__)
 
 
-@app.route("/",methods=["GET","POST"])
+@app.route("/")
 def chart():
     Company = list(salesBycompanies["Company"])
     TotalSales = list(salesBycompanies["Total"])
