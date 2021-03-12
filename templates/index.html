@@ -10,48 +10,41 @@
     <title>Charts.Js </title>
 </head>
 <style>
+    div {
+        margin-top: 15px;
+    }
     div.container {
-        border-color: red;
+        
         border: none;
-        width: 60%;
-        box-shadow: 1px 1px grey;
+        width: 50%;
+        box-shadow: 10px 10px 8px grey;
         float: left;
         margin-top: 20px;
-        margin-left: 10px;
-        background-color: whitesmoke;
-        border: 1px solid;
+        margin-left: 30px;
+        background-color: white;
+        
         height: auto;
         border-radius: 5px;
+        margin-bottom: 15px;
+        
+        
+        
 
     }
 
     div.container.one {
 
-        width: 30%;
+        width: 25%;
         float: left;
-        padding: 6px;
-        margin-left: 30px;
-        margin-top: 20px;
+        padding: 1%;
+        margin-left: 5px;
+        
+        
 
 
     }
-div.w3-blue {
-
-    background-color:#33A2FF ;
-}
-    div.w3-blue.w3-hover-shadow.w3-padding-64.w3-center {
-
-        background-color: #33A2FF;
-        width: 20%;
-        height: 40px;
-        float: left;
-        padding: 6px;
-        margin-left: 120px;
-        margin-top: 20px;
-        box-shadow:1px black;
-        border: solid;
-        border-color: #e8e8e8;
-    }
+ 
+   
 
     ul {
         list-style-type: none;
@@ -98,12 +91,12 @@ var myChart3 = new Chart(ctx, {
             label: 'Sales By Date',
             data: {{ TotalSaless | safe }},
             backgroundColor: [
-                'rgba(255, 99, 132, 0.8)',
-                'rgba(54, 162, 235, 0.8)',
-                'rgba(255, 206, 86, 0.8)',
-                'rgba(75, 192, 192, 0.8)',
-                'rgba(153, 102, 255, 0.8)',
-                'rgba(255, 159, 64, 0.8)'
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -139,12 +132,12 @@ var myChart4 = new Chart(ctx, {
             label: 'Sales By Monthly',
             data: {{ Monthlysalestotal | safe }},
             backgroundColor: [
-                'rgba(255, 99, 132, 0.8)',
-                'rgba(54, 162, 235, 0.8)',
-                'rgba(255, 206, 86, 0.8)',
-                'rgba(75, 192, 192, 0.8)',
-                'rgba(153, 102, 255, 0.8)',
-                'rgba(255, 159, 64, 0.8)'
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)'
 
             ],
             borderColor: [
@@ -181,12 +174,12 @@ var myChart4 = new Chart(ctx, {
             label: 'Sales By Year',
             data: {{ Yearsalestotal | safe }},
             backgroundColor: [
-                'rgba(255, 99, 132, 0.8)',
-                'rgba(54, 162, 235, 0.8)',
-                'rgba(255, 206, 86, 0.8)',
-                'rgba(75, 192, 192, 0.8)',
-                'rgba(153, 102, 255, 0.8)',
-                'rgba(255, 159, 64, 0.8)'
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)'
 
             ],
             borderColor: [
@@ -212,9 +205,13 @@ var myChart4 = new Chart(ctx, {
     }
 });
 </script></div>
+<div style="float: left; ;margin-left:5px ;mangin:5px">
+<div class="container one;" style="height: 150px;; width: 150px; float:none; margin-left: 4px; background-color: rgba(255, 99, 132, 0.7);" ><br> <br><h3 style="color: white; text-align :center;padding:1px">  Total Sales   <br> {{ TotalAllSales }} TL <br></h3><br></div>
+<div class="container one;" style="height: auto;; width: auto; float:none; margin-left: 4px; background-color: rgba(255, 99, 132, 0.7);" ><br> <br><h3 style="color: white; text-align :center;">  Total Sales <br> {{ TotalAllSales }} TL <br></h3><br></div>
+</div>
     </div>
-    <div>
-        <div class="container " style= "width: 45%;" > <canvas id="myChart" ></canvas>
+    <div style="margin-top:0px">
+        <div class="container " style= "width: 45%; margin-top: 0px;" > <canvas id="myChart" ></canvas>
             <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -225,12 +222,12 @@ var myChart = new Chart(ctx, {
             label: 'Sales By Customers',
             data: {{ TotalSales | safe }},
             backgroundColor: [
-                'rgba(255, 99, 132, 0.8)',
-                'rgba(54, 162, 235, 0.8)',
-                'rgba(255, 206, 86, 0.8)',
-                'rgba(75, 192, 192, 0.8)',
-                'rgba(153, 102, 255, 0.8)',
-                'rgba(255, 159, 64, 0.8)'
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -254,7 +251,7 @@ var myChart = new Chart(ctx, {
     }
 });
 </script></div>
-        <div class="container one" style= "width: 45%;">Top 5 Products <canvas id="myChart2" ></canvas>
+        <div class="container one" style= "width: 45%;margin-top: 0px;">Top 5 Products <canvas id="myChart2" ></canvas>
 
              <script>
 var ctx = document.getElementById('myChart2').getContext('2d');
@@ -266,12 +263,12 @@ var myChart2 = new Chart(ctx, {
             label: 'Top 5 Products',
             data: {{ Total_Units_Sold | safe }},
             backgroundColor: [
-                'rgba(255, 99, 132, 0.8)',
-                'rgba(54, 162, 235, 0.8)',
-                'rgba(255, 206, 86, 0.8)',
-                'rgba(75, 192, 192, 0.8)',
-                'rgba(153, 102, 255, 0.8)',
-                'rgba(255, 159, 64, 0.8)'
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',

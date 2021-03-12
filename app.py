@@ -161,6 +161,8 @@ def chart():
     MonthlysalesMonths = list(SalesByMonth["month"])
     Yearsalestotal = [float(i) for i in SalesByYear["total"]]
     Yearsales = list(SalesByYear["year"])
+    TotalAllSales=sum(Yearsalestotal)
+
 
 
 
@@ -175,7 +177,8 @@ def chart():
                            Monthlysalestotal=Monthlysalestotal,
                            MonthlysalesMonths=MonthlysalesMonths,
                            Yearsalestotal=Yearsalestotal,
-                           Yearsales=Yearsales)
+                           Yearsales=Yearsales,
+                           TotalAllSales=round(TotalAllSales,0))
 
 
 
