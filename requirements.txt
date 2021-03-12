@@ -4,6 +4,7 @@ matplotlib
 seaborn
 flask
 mysql.connector
+gunicorn
 
 
 
