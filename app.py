@@ -189,7 +189,7 @@ def chart():
                            MonthlysalesMonths=MonthlysalesMonths,
                            Yearsalestotal=Yearsalestotal,
                            Yearsales=Yearsales,
-                           TotalAllSales=round(TotalAllSales),
+                           TotalAllSales=TotalAllSales,
                            ThisMonthTotalSales=ThisMonthTotalSales,
                            ThisMonth=ThisMonth)
 
@@ -197,4 +197,5 @@ def chart():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.debug=True
+    app.run()
