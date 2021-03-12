@@ -148,20 +148,20 @@ except:
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/",methods=["GET","POST"])
 def chart():
     Company = list(salesBycompanies["Company"])
     TotalSales = list(salesBycompanies["Total"])
     Product_Name = list(Top10Products["Product_Name"])
     Total_Units_Sold = list(Top10Products["Total Units Sold"])
     Shipped_Date = [str(i) for i in SalesByTime["Shipped_Date"]]
-    TotalSaless = [float(str(i).replace(",","")) for i in SalesByTime["Total"] ]
+    TotalSaless = [float(i.replace(",","")) for i in SalesByTime["Total"] ]
     Monthlysalestotal = [float(i) for i in SalesByMonth["total"]]
     MonthlysalesMonths = list(SalesByMonth["month"])
     Yearsalestotal = [float(i) for i in SalesByYear["total"]]
     Yearsales = list(SalesByYear["year"])
     TotalAllSales=sum(Yearsalestotal)
-    SalesByTime["Total"]=[float(str(i).replace(",","")) for i in SalesByTime["Total"] ]
+
 
     mydate = datetime.datetime.now()
     mydate.strftime("%A")  # 'December'
