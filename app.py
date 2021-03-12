@@ -83,6 +83,7 @@ try:
     SalesByTime.to_csv("SalesByTime.csv")
 except:
     SalesByTime=pd.read_csv("SalesByTime.csv")
+SalesByTime1=SalesByTime
 try:
 
     SalesByMonth = pd.read_sql_query("""
@@ -168,15 +169,20 @@ def chart():
     ThisYear = mydate.strftime("%Y")
     ThisMonth = mydate.strftime("%B")
     df = SalesByTime
-    df['Qtr'] = df['Shipped_Date'].apply(lambda x: x.strftime('%m'))
-    df['Qtr'] = pd.to_numeric(df['Qtr']) // 4 + 1
-    df['Year'] = df['Shipped_Date'].apply(lambda x: x.strftime('%Y'))
-    df['Qtr_Yr'] = df['Year'].astype(str) + '-Q' + df['Qtr'].astype(str)
-    ThisMonthTotalSales = df[(df["Month"] == ThisMonth) & (df["Year"] == "ThisYear")]["Total"].sum()
+    try:
 
-
-
-
+        df['Qtr'] = df['Shipped_Date'].apply(lambda x: x.strftime('%m'))
+        df['Qtr'] = pd.to_numeric(df['Qtr']) // 4 + 1
+        df['Year'] = df['Shipped_Date'].apply(lambda x: x.strftime('%Y'))
+        df['Qtr_Yr'] = df['Year'].astype(str) + '-Q' + df['Qtr'].astype(str)
+        ThisMonthTotalSales = df[(df["Month"] == ThisMonth) & (df["Year"] == "ThisYear")]["Total"].sum()
+    except:
+        df['Shipped_Date'] = [datetime.datetime.strptime(i, '%Y-%m-%d') for i in df['Shipped_Date']]
+        df['Qtr'] = df['Shipped_Date'].apply(lambda x: x.strftime('%m'))
+        df['Qtr'] = pd.to_numeric(df['Qtr']) // 4 + 1
+        df['Year'] = df['Shipped_Date'].apply(lambda x: x.strftime('%Y'))
+        df['Qtr_Yr'] = df['Year'].astype(str) + '-Q' + df['Qtr'].astype(str)
+        ThisMonthTotalSales = df[(df["Month"] == ThisMonth) & (df["Year"] == "ThisYear")]["Total"].sum()
 
     return render_template('index.html',
                            Company=Company,
