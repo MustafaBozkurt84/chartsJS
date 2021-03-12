@@ -51,7 +51,7 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #333;
+        background-color: rgb(31, 31, 28);
     }
 
     li {
@@ -60,7 +60,7 @@
 
     li a {
         display: block;
-        color: white;
+        color: #49ad4c;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
@@ -71,7 +71,8 @@
     }
 </style>
 <body style="background-color: #e8e8e8 ;">
-    <ul style="background-color: grey; ">
+    <ul style="background-color: rgb(46, 44, 44); ">
+        <h3 style="text-align: center;color:white;max-height: 0px;">Northwind Data Charts</h3>
         <li><a href="#home">Home</a></li>
         <li><a href="#news">Charts</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -206,12 +207,12 @@ var myChart4 = new Chart(ctx, {
 });
 </script></div>
 <div style="float: left; ;margin-left:5px ;mangin:5px">
-<div class="container one;" style="height: 150px;; width: 150px; float:none; margin-left: 4px; background-color: rgba(255, 99, 132, 0.7);" ><br> <br><h3 style="color: white; text-align :center;padding:1px">  Total Sales   <br> {{ TotalAllSales }} TL <br></h3><br></div>
-<div class="container one;" style="height: auto;; width: auto; float:none; margin-left: 4px; background-color: rgba(255, 99, 132, 0.7);" ><br> <br><h3 style="color: white; text-align :center;">  Total Sales <br> {{ TotalAllSales }} TL <br></h3><br></div>
+<div class="container one;" style="height: 150px; width: auto; float:none; margin-left: 4px; background-color: rgba(255, 99, 132, 0.7);" ><br> <br><h3 style="color: white; text-align :center;padding:1px">  Total Sales (All)  <br> {{ TotalAllSales }} TL <br></h3><br></div>
+<div class="container one;" style="height: auto; width: auto; float:none; margin-left: 4px; background-color: rgba(255, 99, 132, 0.7);" ><br> <br><h3 style="color: white; text-align :center;"> {{ThisMonth}} Total Sales <br> {{ ThisMonthTotalSales }} TL <br></h3><br></div>
 </div>
     </div>
     <div style="margin-top:0px">
-        <div class="container " style= "width: 45%; margin-top: 0px;" > <canvas id="myChart" ></canvas>
+        <div class="container " style= "width: 47%; margin-top: 0px;" > <canvas id="myChart" ></canvas>
             <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -251,7 +252,7 @@ var myChart = new Chart(ctx, {
     }
 });
 </script></div>
-        <div class="container one" style= "width: 45%;margin-top: 0px;">Top 5 Products <canvas id="myChart2" ></canvas>
+        <div class="container one" style= "width: 42%;margin-top: 0px;height: auto;">Top 5 Products <canvas id="myChart2" ></canvas>
 
              <script>
 var ctx = document.getElementById('myChart2').getContext('2d');

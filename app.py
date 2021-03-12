@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template
-
+import datetime
 import os
 import numpy as np
 import pandas as pd
@@ -155,13 +155,24 @@ def chart():
     Product_Name = list(Top10Products["Product_Name"])
     Total_Units_Sold = list(Top10Products["Total Units Sold"])
     Shipped_Date = [str(i) for i in SalesByTime["Shipped_Date"]]
-
-    TotalSaless = [float(i.replace(",","")) for i in SalesByTime["Total"] ]
+    TotalSaless = [float(str(i).replace(",","")) for i in SalesByTime["Total"] ]
     Monthlysalestotal = [float(i) for i in SalesByMonth["total"]]
     MonthlysalesMonths = list(SalesByMonth["month"])
     Yearsalestotal = [float(i) for i in SalesByYear["total"]]
     Yearsales = list(SalesByYear["year"])
     TotalAllSales=sum(Yearsalestotal)
+    SalesByTime["Total"]=[float(str(i).replace(",","")) for i in SalesByTime["Total"] ]
+
+    mydate = datetime.datetime.now()
+    mydate.strftime("%A")  # 'December'
+    ThisYear = mydate.strftime("%Y")
+    ThisMonth = mydate.strftime("%B")
+    df = SalesByTime
+    df['Qtr'] = df['Shipped_Date'].apply(lambda x: x.strftime('%m'))
+    df['Qtr'] = pd.to_numeric(df['Qtr']) // 4 + 1
+    df['Year'] = df['Shipped_Date'].apply(lambda x: x.strftime('%Y'))
+    df['Qtr_Yr'] = df['Year'].astype(str) + '-Q' + df['Qtr'].astype(str)
+    ThisMonthTotalSales = df[(df["Month"] == ThisMonth) & (df["Year"] == "ThisYear")]["Total"].sum()
 
 
 
@@ -178,7 +189,9 @@ def chart():
                            MonthlysalesMonths=MonthlysalesMonths,
                            Yearsalestotal=Yearsalestotal,
                            Yearsales=Yearsales,
-                           TotalAllSales=round(TotalAllSales,0))
+                           TotalAllSales=round(TotalAllSales),
+                           ThisMonthTotalSales=ThisMonthTotalSales,
+                           ThisMonth=ThisMonth)
 
 
 
