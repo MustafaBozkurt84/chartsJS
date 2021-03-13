@@ -209,13 +209,13 @@ var myChart4 = new Chart(ctx, {
     }
 });
 </script></div>
-<div style="float: left; ;margin-left:5px ;mangin:5px">
-<div class="container one;" style="height: 150px; width: auto; float:none; margin-left: 4px; background-color: rgba(255, 99, 132, 0.7);" ><br> <br><h3 style="color: white; text-align :center;padding:1px">  Total Sales (All)  <br> {{ TotalAllSales }} TL <br></h3><br></div>
+<div style="float: left; ;margin-left:30px ;">
+<div class="container one;" style="height: auto; width: 250px; float:none; margin-left: 4px; background-color: rgba(255, 99, 132, 0.7);" ><br> <br><h3 style="color: white; text-align :center;padding:1px">  Total Sales (All)  <br> {{ TotalAllSales }} TL <br></h3><br></div>
 <div class="container one;" style="height: auto; width: auto; float:none; margin-left: 4px; background-color: rgba(255, 99, 132, 0.7);" ><br> <br><h3 style="color: white; text-align :center;"> {{ThisMonth}} Total Sales <br> {{ ThisMonthTotalSales }} TL <br></h3><br></div>
 </div>
     </div>
     <div style="margin-top:0px">
-        <div class="container " style= "width: 47%; margin-top: 0px; " > <canvas id="myChart" ></canvas>
+        <div class="container " style= "width: 50%; margin-top: 0px; height:420px" > <canvas id="myChart" ></canvas>
             <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -255,7 +255,7 @@ var myChart = new Chart(ctx, {
     }
 });
 </script></div>
-        <div class="container one" style= "width: 42%;margin-top: 0px;height: auto;">Top 5 Products <canvas id="myChart2" ></canvas>
+        <div class="container one" style= "width: 47%;margin-top: 0px;height:420px;">Top 5 Products <canvas id="myChart2" ></canvas>
 
              <script>
 var ctx = document.getElementById('myChart2').getContext('2d');
@@ -292,7 +292,7 @@ var myChart2 = new Chart(ctx, {
 </script></div>
     </div>
 
-<div>    <div class="container " style= "width: 47%; margin-top: 0px;height: 346px; " ><canvas id="myChart10" ></canvas>
+<div>    <div class="container"  ><canvas id="myChart10" ></canvas>
 
         <script>
 var ctx = document.getElementById('myChart10').getContext('2d');
@@ -323,11 +323,11 @@ data: {
    }]
 },
 options: {
-   scales: true
+   scales: false
 }
 });
 </script></div>
-    <div class="container one" style= "width: 42%;margin-top: 0px;height: 346px;">Sales by Cities<canvas id="myChart12" ></canvas>
+    <div class="container" style="float:left; width: 47%;margin-left:5px;">Sales by Cities<canvas id="myChart12" ></canvas>
 
         <script>
         var ctx = document.getElementById('myChart12').getContext('2d');
@@ -367,7 +367,7 @@ options: {
         }]
         },
         options: {
-        scales: true
+        scales: false
         }
         });
         </script></div></div>
