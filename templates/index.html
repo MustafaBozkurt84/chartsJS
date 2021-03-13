@@ -215,7 +215,7 @@ var myChart4 = new Chart(ctx, {
 </div>
     </div>
     <div style="margin-top:0px">
-        <div class="container " style= "width: 47%; margin-top: 0px;" > <canvas id="myChart" ></canvas>
+        <div class="container " style= "width: 47%; margin-top: 0px; " > <canvas id="myChart" ></canvas>
             <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -286,17 +286,17 @@ var myChart2 = new Chart(ctx, {
         }]
     },
     options: {
-        scales: false
+        scales: true
     }
 });
 </script></div>
     </div>
     <div style="margin-top:0px">
-        <div class="container " style= "width: 44%; margin-top: 0px;" >Sales by Cities<canvas id="myChart12" ></canvas>
+        <div class="container " style= "width:600px; margin-top: 0px; margin-left:30px;height: 328px;" >Sales by Cities<canvas id="myChart12" ></canvas>
 
              <script>
 var ctx = document.getElementById('myChart12').getContext('2d');
-var myChart2 = new Chart(ctx, {
+var myChart12 = new Chart(ctx, {
     type: 'polarArea',
     data: {
         labels: {{ cities | safe }},
@@ -332,11 +332,11 @@ var myChart2 = new Chart(ctx, {
         }]
     },
     options: {
-        scales: false
+        scales: true
     }
 });
 </script></div>
-        <div class="container one" style= "width: 45%;margin-top: 0px;height: auto;"><canvas id="myChart10" ></canvas>
+        <div class="container one" style= "width: 600px;margin-top: 0px;height: 328px;"><canvas id="myChart10" ></canvas>
 
              <script>
 var ctx = document.getElementById('myChart10').getContext('2d');
@@ -367,7 +367,7 @@ var myChart10 = new Chart(ctx, {
         }]
     },
     options: {
-        scales: false
+        scales: true
     }
 });
 </script></div>
