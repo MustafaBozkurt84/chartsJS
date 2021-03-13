@@ -146,6 +146,35 @@ try:
     """,connection)
 except:
     pass
+try:
+    SalesByCity = pd.read_sql_query("""
+    select
+    od.order_id, sum(od.quantity * od.unit_price) as sales, o.ship_city , o.ship_country_region
+    from order_details od
+    inner join orders o
+    on  o.id = od.order_id
+    group by o.ship_city, o.ship_country_region ;
+    """,connection)
+    SalesByCity.to_csv("SalesByCity.csv")
+except:
+    SalesByCity = pd.read_csv("SalesByCity.csv")
+try:
+    SalesBySuppliers = pd.read_sql_query("""
+    SELECT
+    s.company, sum(od.quantity * od.unit_price) as sales
+    FROM
+    order_details od
+    inner join  products  p
+    on  p.id = od.product_id
+    inner JOIN suppliers s
+    on s.id = p.supplier_ids
+    group  by  s.company;
+""",connection)
+    SalesBySuppliers.to_csv("SalesBySuppliers.csv")
+except:
+    SalesBySuppliers=pd.read_csv("SalesBySuppliers.csv")
+
+
 app = Flask(__name__)
 
 
@@ -183,6 +212,11 @@ def chart():
         df['Year'] = df['Shipped_Date'].apply(lambda x: x.strftime('%Y'))
         df['Qtr_Yr'] = df['Year'].astype(str) + '-Q' + df['Qtr'].astype(str)
         ThisMonthTotalSales = df[(df["Month"] == ThisMonth) & (df["Year"] == "ThisYear")]["Total"].sum()
+    Suppliers=list(SalesBySuppliers["company"])
+    salesbysuppliersale=list(SalesBySuppliers["sales"])
+    cities= list(SalesByCity["ship_city"])
+    salesCitysales = list(SalesByCity["sales"])
+
 
     return render_template('index.html',
                            Company=Company,
@@ -197,7 +231,11 @@ def chart():
                            Yearsales=Yearsales,
                            TotalAllSales=TotalAllSales,
                            ThisMonthTotalSales=ThisMonthTotalSales,
-                           ThisMonth=ThisMonth)
+                           ThisMonth=ThisMonth,
+                           Suppliers=Suppliers,
+                           salesbysuppliersale=salesbysuppliersale,
+                           cities=cities,
+                           salesCitysales=salesCitysales)
 
 
 
