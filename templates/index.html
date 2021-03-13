@@ -72,6 +72,22 @@
     li a:hover {
         background-color: #111;
     }
+    table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
 </style>
 <body style="background-color: #e8e8e8 ;">
     <ul style="background-color: rgb(46, 44, 44); ">
@@ -370,7 +386,162 @@ options: {
         scales: false
         }
         });
-        </script></div></div>
+        </script></div></div>  <br>  
+<div class="container " style="overflow-x:auto;width:60%;height: 640px;">
+    <table>Top 5 Employees
+        <tr>
+          <th>Employee Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Sales</th>
+        </tr>
+        <tr>
+          {% for i in employee0 %}
+          <td>{{i}}</td>
+          {% endfor %}
+          </tr>
+        <tr>
+          {% for i in employee1 %}
+          <td>{{i}}</td>
+          {% endfor %}
+          </tr>
+        <tr>
+          {% for i in employee2 %}
+          <td>{{i}}</td>
+          {% endfor %}
+          </tr>
+        <tr>
+          {% for i in employee3 %}
+          <td>{{i}}</td>
+          {% endfor %}
+          </tr>
+        <tr>
+          {% for i in employee4 %}
+          <td>{{i}}</td>
+          {% endfor %}
+          </tr>
+    
+    </table> 
+    <table>Latest Orders
+        <tr>
+          <th>Order Date</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Price</th>
+          <th>Order Status</th>
+        </tr>
+        <tr>
+          {% for i in LatestOrder0 %}
+          <td>{{i}}</td>
+          {% endfor %}
+          </tr>
+        <tr>
+          {% for i in LatestOrder1 %}
+          <td>{{i}}</td>
+          {% endfor %}
+          </tr>
+        <tr>
+          {% for i in LatestOrder2 %}
+          <td>{{i}}</td>
+          {% endfor %}
+          </tr>
+        <tr>
+          {% for i in LatestOrder3 %}
+          <td>{{i}}</td>
+          {% endfor %}
+          </tr>
+        <tr>
+          {% for i in LatestOrder4 %}
+          <td>{{i}}</td>
+          {% endfor %}
+          </tr>
+    
+    </table>   
+</div>
+<div class="container" style="float:left; width: 35%;margin-left:5px;height: 640px;">Shipper Company<canvas id="myChart13" ></canvas>
+
+    <script>
+    var ctx = document.getElementById('myChart13').getContext('2d');
+    var myChart12 = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+    labels: {{ ShipperCompany | safe }},
+    datasets: [{
+    label: 'Shipper Company',
+    data: {{ ShipperQuantity | safe }},
+    backgroundColor: [
+       'rgba(255, 99, 132, 0.4)',
+       'rgba(54, 162, 235, 0.4)',
+       'rgba(255, 206, 86, 0.4)',
+       'rgba(75, 192, 192, 0.4)',
+       'rgba(153, 102, 255, 0.4)',
+       'rgba(255, 159, 64, 0.4)',
+        'rgba(255, 99, 132, 0.4)',
+       'rgba(54, 162, 235, 0.4)',
+       'rgba(255, 206, 86, 0.4)',
+       'rgba(75, 192, 192, 0.4)',
+        'rgba(255, 99, 132, 0.4)',
+       'rgba(54, 162, 235, 0.4)',
+       'rgba(255, 206, 86, 0.4)',
+       'rgba(75, 192, 192, 0.4)',
+
+    ],
+    borderColor: [
+       'rgba(255, 99, 132, 1)',
+       'rgba(54, 162, 235, 1)',
+       'rgba(255, 206, 86, 1)',
+       'rgba(75, 192, 192, 1)',
+       'rgba(153, 102, 255, 1)',
+       'rgba(255, 159, 64, 1)'
+    ],
+    borderWidth: 1
+    }]
+    },
+    options: {
+    scales: true
+    }
+    });
+    </script> Sales By Category<canvas id="myChart14" ></canvas>
+            <script>
+var ctx = document.getElementById('myChart14').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: {{ Catagory | safe }},
+        datasets: [{
+            label: 'Sales By Category',
+            data: {{ SalesCatagory | safe }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: false
+                }
+            }]
+        }
+    }
+});
+</script></div>
 </body>
 
 </html>

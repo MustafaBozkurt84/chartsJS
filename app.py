@@ -174,7 +174,77 @@ try:
 except:
     SalesBySuppliers=pd.read_csv("SalesBySuppliers.csv")
 
-
+try:
+    Top10Employees = pd.read_sql_query("""
+    SELECT o.employee_id,
+    e.first_name, e.last_name,  sum(od.quantity * od.unit_price) as totalsales
+    FROM
+    order_details od
+    inner JOIN orders o
+    on od.order_id = o.id
+    inner join employees e
+    on o.employee_id = e.id
+    group by
+    o.employee_id
+    order by sum(od.quantity * od.unit_price) DESC limit 10;
+""",connection)
+    Top10Employees.to_csv("Top10Employees.csv")
+except:
+    Top10Employees=pd.read_csv("Top10Employees.csv")
+try:
+    Shipper = pd.read_sql_query("""
+    SELECT 
+    s.company , sum(od.quantity) as quantity
+    FROM
+    order_details od
+    inner JOIN orders o
+    on od.order_id = o.id
+    inner join shippers s
+    on o.shipper_id = s.id
+    group by
+    s.id
+    order by sum(od.quantity) DESC ;
+    """,connection)
+    Shipper.to_csv("Shipper.csv")
+except:
+    Shipper=pd.read_csv("Shipper.csv")
+try:
+    LatestOrders = pd.read_sql_query("""
+    SELECT  O.order_date, P.product_name,
+    OD.quantity, 
+    OD.unit_price, 
+    OD.quantity * OD.unit_price  AS Price, ods.status_name
+    FROM
+    orders o
+    INNER JOIN order_details od
+    ON o.id = od.order_id
+    INNER JOIN
+    order_details_status  ods
+    ON  od.status_id = ods.id
+    INNER JOIN
+    products p
+    ON  od.product_id = p.id
+    order by o.order_date
+    DESC LIMIT 5;
+    """,connection)
+    LatestOrders.to_csv("LatestOrders.csv")
+except:
+    LatestOrders=pd.read_csv("LatestOrders.csv")
+try:
+    SalesByCatagory = pd.read_sql_query("""
+SELECT p.category,OD.quantity*OD.unit_price as Sales FROM orders o
+INNER JOIN order_details od
+ON 	o.id=od.order_id
+INNER JOIN order_details_status ods
+ON od.status_id =ods.id
+INNER JOIN products p
+ON od.product_id=p.id
+GROUP By p.category
+order by OD.quantity*OD.unit_price DESC;
+ """,connection)
+    SalesByCatagory.to_csv("SalesByCatagory.csv")
+except:
+    SalesByCatagory=pd.read_csv("SalesByCatagory.csv")
 app = Flask(__name__)
 
 
@@ -216,6 +286,22 @@ def chart():
     salesbysuppliersale=list(SalesBySuppliers["sales"])
     cities= list(SalesByCity["ship_city"])
     salesCitysales = list(SalesByCity["sales"])
+    Top10Employeess=Top10Employees.T
+    employee0=list(Top10Employeess[0])
+    employee1 = list(Top10Employeess[1])
+    employee2 = list(Top10Employeess[2])
+    employee3 = list(Top10Employeess[3])
+    employee4 = list(Top10Employeess[4])
+    ShipperCompany=list(Shipper["company"])
+    ShipperQuantity=list(Shipper["quantity"])
+    LatestOrderss = LatestOrders.T
+    LatestOrder0 = list(LatestOrderss[0])
+    LatestOrder1 = list(LatestOrderss[1])
+    LatestOrder2 = list(LatestOrderss[2])
+    LatestOrder3 = list(LatestOrderss[3])
+    LatestOrder4 = list(LatestOrderss[4])
+    Catagory = list(SalesByCatagory["category"])
+    SalesCatagory = list(SalesByCatagory["Sales"])
 
 
     return render_template('index.html',
@@ -235,10 +321,21 @@ def chart():
                            Suppliers=Suppliers,
                            salesbysuppliersale=salesbysuppliersale,
                            cities=cities,
-                           salesCitysales=salesCitysales)
-
-
-
+                           salesCitysales=salesCitysales,
+                           employee0=employee0,
+                           employee1=employee1,
+                           employee2=employee2,
+                           employee3=employee3,
+                           employee4=employee4,
+                           ShipperCompany=ShipperCompany,
+                           ShipperQuantity=ShipperQuantity,
+                           LatestOrder0=LatestOrder0,
+                           LatestOrder1=LatestOrder1,
+                           LatestOrder2=LatestOrder2,
+                           LatestOrder3=LatestOrder3,
+                           LatestOrder4=LatestOrder4,
+                           Catagory=Catagory,
+                           SalesCatagory=SalesCatagory)
 
 if __name__ == "__main__":
     app.debug=True

@@ -1,0 +1,6 @@
+,order_date,product_name,quantity,unit_price,Price,status_name
+0,2006-06-23,Northwind Traders Dried Pears,30.0,30.0,900.0,Invoiced
+1,2006-06-23,Northwind Traders Dried Apples,30.0,53.0,1590.0,Invoiced
+2,2006-06-08,Northwind Traders Chocolate,40.0,12.75,510.0,Invoiced
+3,2006-06-07,Northwind Traders Coffee,5.0,46.0,230.0,Invoiced
+4,2006-06-05,Northwind Traders Boysenberry Spread,90.0,25.0,2250.0,Invoiced
