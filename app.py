@@ -304,7 +304,7 @@ def chart():
     SalesCatagory = list(SalesByCatagory["Sales"])
 
 
-    return render_template('index.html',
+    return render_template('index copy.html',
                            Company=Company,
                            TotalSales=TotalSales ,
                            Product_Name=Product_Name,
