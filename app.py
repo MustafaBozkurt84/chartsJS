@@ -286,7 +286,7 @@ def chart():
     salesbysuppliersale=list(SalesBySuppliers["sales"])
     cities= list(SalesByCity["ship_city"])
     salesCitysales = list(SalesByCity["sales"])
-    Top10Employeess=Top10Employees.T.iloc[0:]
+    Top10Employeess=Top10Employees.T.iloc[1:]
     employee0=list(Top10Employeess[0])
     employee1 = list(Top10Employeess[1])
     employee2 = list(Top10Employeess[2])
@@ -294,7 +294,7 @@ def chart():
     employee4 = list(Top10Employeess[4])
     ShipperCompany=list(Shipper["company"])
     ShipperQuantity=list(Shipper["quantity"])
-    LatestOrderss = LatestOrders.T.iloc[0:]
+    LatestOrderss = LatestOrders.T.iloc[1:]
     LatestOrder0 = list(LatestOrderss[0])
     LatestOrder1 = list(LatestOrderss[1])
     LatestOrder2 = list(LatestOrderss[2])
