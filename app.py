@@ -295,11 +295,11 @@ def chart():
     ShipperCompany=list(Shipper["company"])
     ShipperQuantity=list(Shipper["quantity"])
     LatestOrderss = LatestOrders.T
-    LatestOrder0 = list(LatestOrderss[0])
-    LatestOrder1 = list(LatestOrderss[1])
-    LatestOrder2 = list(LatestOrderss[2])
-    LatestOrder3 = list(LatestOrderss[3])
-    LatestOrder4 = list(LatestOrderss[4])
+    LatestOrder0 = list(LatestOrderss[1])
+    LatestOrder1 = list(LatestOrderss[2])
+    LatestOrder2 = list(LatestOrderss[3])
+    LatestOrder3 = list(LatestOrderss[4])
+    LatestOrder4 = list(LatestOrderss[5])
     Catagory = list(SalesByCatagory["category"])
     SalesCatagory = list(SalesByCatagory["Sales"])
 
