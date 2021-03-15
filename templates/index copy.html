@@ -40,7 +40,7 @@
 
         width: 350px;
         float: left;
-        padding: 1%;
+        
         margin-left: 5px;
         
         
@@ -90,18 +90,24 @@ th {
   color: white;
 }
 .container.chart {
-    float:left; min-width: 5vw; margin-left: 5px; margin-top:10px;
+    float:left; min-width: 10vw; margin-left: 1px; margin-top:5px;
 }
 
 .container.chart {
-    margin-left: 30px;
-}
-container: .one .card {
+    margin-left: 5px;
+    
+.titles {
+text-align:  center;
 
-    min-width: 5vw; max-width: 15vw;
 }
+canvas {
+    min-width: 10vw;
+}
+
 </style>
-<body style="background-color: #e8e8e8 ;">
+
+<body style="background-color: 	rgb(236, 230, 255) ;">
+    <p></p>
     <ul style="background-color: rgb(46, 44, 44); ">
         <h3 style="text-align: center;color:white;max-height: 0px;">Northwind Data Charts</h3>
         <li><a href="#home">Home</a></li>
@@ -112,10 +118,10 @@ container: .one .card {
 
 
       <div style="float: left; ;margin-left:30px ;">
-        <div class="container one;" style="height: auto; width: 250px; float:none; margin-left: 4px; background-color: rgb(88, 169, 245);" ><h3 style="color: white; text-align :center;padding:1px">  Total Sales (All)  <br> {{ TotalAllSales }} TL </h3></div>
-        <div class="container one;" style="height: auto; width: 250px; float:none; margin-left: 4px; background-color: rgb(88, 169, 245);" ><h3 style="color: white; text-align :center;"> {{ThisMonth}} Total Sales <br> {{ ThisMonthTotalSales }} TL </h3></div>
+        <div class="container one;" style="height: auto; width: 250px; float:none; margin-left: 4px; background-color: rgba(54, 162, 235);" ><h3 style="color: white; text-align :center;padding:1px">  Total Sales (All)  <br> {{ TotalAllSales }} TL </h3></div>
+        <div class="container one;" style="height: auto; width: 250px; float:none; margin-left: 4px; background-color: rgba(54, 162, 235);" ><h3 style="color: white; text-align :center;"> {{ThisMonth}} Total Sales <br> {{ ThisMonthTotalSales }} TL </h3></div>
         </div>
-<div class="container" ><canvas id="myChart3" ></canvas>
+<div class="container" ><ul class="title" style="font-family: Tahoma, Verdana, sans-serif; ;background-color: whitesmoke;border-bottom:solid grey 1px" > Sales By Date</ul><canvas id="myChart3" ></canvas>
               <script>
 var ctx = document.getElementById('myChart3').getContext('2d');
 var myChart3 = new Chart(ctx, {
@@ -156,7 +162,7 @@ var myChart3 = new Chart(ctx, {
 });
 </script></div>
 
-<div class="container one" > <canvas id="myChart4" ></canvas>
+<div class="container one" ><ul class="title" style="background-color: whitesmoke;border-bottom:solid grey 1px">Sales By Date</ul><canvas id="myChart4" ></canvas>
               <script>
 var ctx = document.getElementById('myChart4').getContext('2d');
 var myChart4 = new Chart(ctx, {
@@ -198,7 +204,7 @@ var myChart4 = new Chart(ctx, {
     }
 });
 </script>
-        <canvas id="myChart8" ></canvas>
+<canvas id="myChart8" ></canvas>
               <script>
 var ctx = document.getElementById('myChart8').getContext('2d');
 var myChart4 = new Chart(ctx, {
@@ -243,7 +249,7 @@ var myChart4 = new Chart(ctx, {
 
     
 <div class="containermain"> 
-<div class="container chart" > Sales By Customers<canvas id="myChart"></canvas>
+<div class="container chart" ><ul class="title" style="background-color: whitesmoke;border-bottom:solid grey 1px">Sales By Customers</ul> <canvas id="myChart"></canvas>
             <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -282,8 +288,8 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-</script></div>
-<div class="container chart ">Sales By Category<canvas id="myChart14" ></canvas>
+</script><br></div>
+<div class="container chart "><ul class="title" style="background-color: whitesmoke;border-bottom:solid grey 1px">Sales By Category</ul><canvas id="myChart14" ></canvas>
             <script>
 var ctx = document.getElementById('myChart14').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -322,8 +328,8 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-</script></div> 
-<div class="container chart ">Sales By Cities<canvas id="myChart12"></canvas>
+</script><br></div> 
+<div class="container chart "><ul class="title" style="background-color: whitesmoke;border-bottom:solid grey 1px">Sales By Cities</ul><canvas id="myChart12"></canvas>
     <script>
     var ctx = document.getElementById('myChart12').getContext('2d');
     var myChart12 = new Chart(ctx, {
@@ -365,10 +371,10 @@ var myChart = new Chart(ctx, {
     scales: false
     }
     });
-    </script></div>
+    </script><br></div>
 </div> 
 <div class="containermain">
-<div class="container chart"> Top 5 Products<canvas id="myChart2" ></canvas>
+<div class="container chart"><ul class="title" style="background-color: whitesmoke;border-bottom:solid grey 1px">Top 5 Products</ul> <canvas id="myChart2" ></canvas>
 
     <script>
 var ctx = document.getElementById('myChart2').getContext('2d');
@@ -402,13 +408,13 @@ options: {
 scales: true
 }
 });
-</script></div>
-<div class="container chart">Suppliers<canvas id="myChart10" ></canvas>
+</script><br></div>
+<div class="container chart"><ul class="title" style="background-color: whitesmoke;border-bottom:solid grey 1px">Suppliers</ul><canvas id="myChart10" ></canvas>
 
     <script>
 var ctx = document.getElementById('myChart10').getContext('2d');
 var myChart10 = new Chart(ctx, {
-type: 'radar',
+type: 'polarArea',
 data: {
 labels: {{ Suppliers | safe }},
 datasets: [{
@@ -437,8 +443,8 @@ options: {
 scales: false
 }
 });
-</script></div> 
-<div class="container chart">Shipper Company<canvas id="myChart13" ></canvas>
+</script><br></div> 
+<div class="container chart"><ul class="title" style="background-color: whitesmoke;border-bottom:solid grey 1px">Shipper Company</ul><canvas id="myChart13" ></canvas>
 
     <script>
     var ctx = document.getElementById('myChart13').getContext('2d');
@@ -520,12 +526,12 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-</script></div>
+</script><br></div>
 </div>  
 
 
-<div class="container chart ">
-    <table>Top 5 Employees
+<div class="container chart "><ul class="title" style="background-color: whitesmoke;border-bottom:solid grey 1px">Top 5 Employees</ul>
+    <table>
         <tr>
           <th>Employee Id</th>
           <th>First Name</th>
@@ -561,7 +567,7 @@ var myChart = new Chart(ctx, {
     </table> 
      
 </div>
-<div class="container chart"><table>Latest Orders
+<div class="container chart"><ul class="title" style="background-color: whitesmoke;border-bottom:solid grey 1px">Latest Orders</ul><table>
     <tr>
       <th>Order Date</th>
       <th>Product Name</th>
