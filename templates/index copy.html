@@ -94,10 +94,9 @@ th {
 }
 
 .container.chart {
-    margin-left: 5px;
+    margin-left: 15px;
     
-.titles {
-text-align:  center;
+
 
 }
 canvas {
@@ -106,7 +105,7 @@ canvas {
 
 </style>
 
-<body style="background-color: 	rgb(236, 230, 255) ;">
+<body style="background-color: 	#e8e8e8 ;">
     <p></p>
     <ul style="background-color: rgb(46, 44, 44); ">
         <h3 style="text-align: center;color:white;max-height: 0px;">Northwind Data Charts</h3>
@@ -162,7 +161,7 @@ var myChart3 = new Chart(ctx, {
 });
 </script></div>
 
-<div class="container one" ><ul class="title" style="background-color: whitesmoke;border-bottom:solid grey 1px">Sales By Date</ul><canvas id="myChart4" ></canvas>
+<div class="container one" ><canvas id="myChart4" ></canvas>
               <script>
 var ctx = document.getElementById('myChart4').getContext('2d');
 var myChart4 = new Chart(ctx, {
