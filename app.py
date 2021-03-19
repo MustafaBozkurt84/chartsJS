@@ -245,7 +245,10 @@ order by OD.quantity*OD.unit_price DESC;
     SalesByCatagory.to_csv("SalesByCatagory.csv")
 except:
     SalesByCatagory=pd.read_csv("SalesByCatagory.csv")
-app = Flask(__name__)
+
+TEMPLATE_DIR = os.path.abspath('./templates')
+STATIC_DIR = os.path.abspath('./static')
+app = Flask(__name__, template_folder=TEMPLATE_DIR, static_folder=STATIC_DIR)
 
 
 @app.route("/",methods=["GET","POST"])
@@ -302,9 +305,12 @@ def chart():
     LatestOrder4 = list(LatestOrderss[4])
     Catagory = list(SalesByCatagory["category"])
     SalesCatagory = list(SalesByCatagory["Sales"])
+    SalesByCatagory.groupby("category").sum("Sales")
+    categoryssales = SalesByCatagory.groupby("category").sum("Sales")
+    categorystop = categoryssales[categoryssales["Sales"].max() == categoryssales["Sales"]].index[0]
+    categoryssalestop = SalesByCatagory.groupby("category").sum("Sales").max()[1]
 
-
-    return render_template('index copy.html',
+    return render_template('dashboard.html',
                            Company=Company,
                            TotalSales=TotalSales ,
                            Product_Name=Product_Name,
@@ -335,8 +341,13 @@ def chart():
                            LatestOrder3=LatestOrder3,
                            LatestOrder4=LatestOrder4,
                            Catagory=Catagory,
-                           SalesCatagory=SalesCatagory)
+                           SalesCatagory=SalesCatagory,
+                           categorystop=categorystop,
+                           categoryssalestop=categoryssalestop)
 
 if __name__ == "__main__":
     app.debug=True
     app.run()
+
+
+

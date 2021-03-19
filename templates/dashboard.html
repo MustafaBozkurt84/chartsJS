@@ -1,0 +1,924 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="static/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="static/assets/img/favicon.png">
+  <title>
+    Northwind Data Dashboard 
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="static/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="static/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="static/assets/demo/demo.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+
+<body class="">
+  <div class="wrapper">
+    <div class="sidebar">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+    -->
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <a href="javascript:void(0)" class="simple-text logo-mini">
+            LOGO
+          </a>
+          <a href="javascript:void(0)" class="simple-text logo-normal">
+            Company Name
+          </a>
+        </div>
+        <ul class="nav">
+          <li class="active ">
+            <a href="./dashboard.html">
+              <i class="tim-icons icon-chart-pie-36"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle d-inline">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:void(0)">Dashboard</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ml-auto">
+              <li class="search-bar input-group">
+                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split" ></i>
+                  <span class="d-lg-none d-md-block">Search</span>
+                </button>
+              </li>
+             
+              
+              <li class="separator d-lg-none"></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-chart">
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <h5 class="card-category">Sales By Date</h5>
+                    <h2 class="card-title">Daily Sales</h2>
+                  </div>
+                  <div class="col-sm-6">
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas  id="chart33" width="300" height="50"></canvas><script>
+                    var ctx = document.getElementById('chart33').getContext('2d');
+                    var chartBig1 = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: {{ Shipped_Date | safe }},
+                            datasets: [{
+                                label: 'Sales By Date',
+                                data: {{ TotalSaless | safe }},
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.4)',
+                                    'rgba(255, 206, 86, 0.4)',
+                                    'rgba(75, 192, 192, 0.4)',
+                                    'rgba(153, 102, 255, 0.4)',
+                                    'rgba(255, 159, 64, 0.4)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    </script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Sales By Year </h5>
+                <h3 class="card-title"><i class="tim-icons icon-bank text-primary"></i> Total Sales {{TotalAllSales}} </h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="myChart8" width="150" height="68"></canvas>
+                   <script>
+var ctx = document.getElementById('myChart8').getContext('2d');
+var myChart4 = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: {{ Yearsales | safe }},
+        datasets: [{
+            label: 'Sales By Year',
+            data: {{ Yearsalestotal | safe }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)'
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 159, 64, 0.8)'
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Sales By Months</h5>
+                <h3 class="card-title"><i class="tim-icons icon-coins text-info"></i>{{ThisMonth}} {{ ThisMonthTotalSales }}$ </h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="myChart4" width="150" height="68"></canvas>
+              <script>
+var ctx = document.getElementById('myChart4').getContext('2d');
+var myChart4 = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: {{ MonthlysalesMonths | safe }},
+        datasets: [{
+            label: 'Sales By Monthly',
+            data: {{ Monthlysalestotal | safe }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)'
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 159, 64, 0.8)'
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Sales By Category</h5>
+                <h3 class="card-title"><i class="tim-icons icon-app text-success"></i> {{categorystop}} {{categoryssalestop}} $</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="myChart14" width="150" height="69" ></canvas>
+            <script>
+var ctx = document.getElementById('myChart14').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: {{ Catagory | safe }},
+        datasets: [{
+            label: 'Sales By Category',
+            data: {{ SalesCatagory | safe }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- new added charts -->
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Sales By Cities</h5>
+                
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="myChart12" width="150" height="68"></canvas>
+    <script>
+    var ctx = document.getElementById('myChart12').getContext('2d');
+    var myChart12 = new Chart(ctx, {
+    type: 'radar',
+    data: {
+    labels: {{ cities | safe }},
+    datasets: [{
+    label: 'Sales By Cities',
+    data: {{ salesCitysales | safe }},
+    backgroundColor: [
+       'rgba(255, 99, 132, 0.4)',
+       'rgba(54, 162, 235, 0.4)',
+       'rgba(255, 206, 86, 0.4)',
+       'rgba(75, 192, 192, 0.4)',
+       'rgba(153, 102, 255, 0.4)',
+       'rgba(255, 159, 64, 0.4)',
+        'rgba(255, 99, 132, 0.4)',
+       'rgba(54, 162, 235, 0.4)',
+       'rgba(255, 206, 86, 0.4)',
+       'rgba(75, 192, 192, 0.4)',
+        'rgba(255, 99, 132, 0.4)',
+       'rgba(54, 162, 235, 0.4)',
+       'rgba(255, 206, 86, 0.4)',
+       'rgba(75, 192, 192, 0.4)',
+
+    ],
+    borderColor: [
+       'rgba(255, 99, 132, 1)',
+       'rgba(54, 162, 235, 1)',
+       'rgba(255, 206, 86, 1)',
+       'rgba(75, 192, 192, 1)',
+       'rgba(153, 102, 255, 1)',
+       'rgba(255, 159, 64, 1)'
+    ],
+    borderWidth: 1
+    }]
+    },
+    options: {
+    scales: false
+    }
+    });
+    </script>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Top 5 Products</h5>
+                
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="myChart2" width="150" height="68"></canvas>
+
+    <script>
+var ctx = document.getElementById('myChart2').getContext('2d');
+var myChart2 = new Chart(ctx, {
+type: 'pie',
+data: {
+labels: {{ Product_Name | safe }},
+datasets: [{
+   label: 'Top 5 Products',
+   data: {{ Total_Units_Sold | safe }},
+   backgroundColor: [
+       'rgba(255, 99, 132, 0.4)',
+       'rgba(54, 162, 235, 0.4)',
+       'rgba(255, 206, 86, 0.4)',
+       'rgba(75, 192, 192, 0.4)',
+       'rgba(153, 102, 255, 0.4)',
+       'rgba(255, 159, 64, 0.4)'
+   ],
+   borderColor: [
+       'rgba(255, 99, 132, 1)',
+       'rgba(54, 162, 235, 1)',
+       'rgba(255, 206, 86, 1)',
+       'rgba(75, 192, 192, 1)',
+       'rgba(153, 102, 255, 1)',
+       'rgba(255, 159, 64, 1)'
+   ],
+   borderWidth: 1
+}]
+},
+options: {
+scales: true
+}
+});
+</script>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Suppliers</h5>
+                
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="myChart10" width="150" height="68" ></canvas>
+
+    <script>
+var ctx = document.getElementById('myChart10').getContext('2d');
+var myChart10 = new Chart(ctx, {
+type: 'polarArea',
+data: {
+labels: {{ Suppliers | safe }},
+datasets: [{
+   label: 'Suppliers',
+   data: {{ salesbysuppliersale | safe }},
+   backgroundColor: [
+       'rgba(255, 99, 132, 0.4)',
+       'rgba(54, 162, 235, 0.4)',
+       'rgba(255, 206, 86, 0.4)',
+       'rgba(75, 192, 192, 0.4)',
+       'rgba(153, 102, 255, 0.4)',
+       'rgba(255, 159, 64, 0.4)'
+   ],
+   borderColor: [
+       'rgba(255, 99, 132, 1)',
+       'rgba(54, 162, 235, 1)',
+       'rgba(255, 206, 86, 1)',
+       'rgba(75, 192, 192, 1)',
+       'rgba(153, 102, 255, 1)',
+       'rgba(255, 159, 64, 1)'
+   ],
+   borderWidth: 1
+}]
+},
+options: {
+scales: false
+}
+});
+</script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- new added charts -->
+         <!-- new added charts -->
+         <div class="row">
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Sales By Customers</h5>
+                
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="myChart"></canvas>
+            <script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ Company | safe }},
+        datasets: [{
+            label: 'Sales By Customers',
+            data: {{ TotalSales | safe }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Shipping Company</h5>
+                
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="myChart13" width="150" height="68"></canvas>
+
+                  <script>
+                  var ctx = document.getElementById('myChart13').getContext('2d');
+                  var myChart12 = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                  labels: {{ ShipperCompany | safe }},
+                  datasets: [{
+                  label: 'Shipper Company',
+                  data: {{ ShipperQuantity | safe }},
+                  backgroundColor: [
+                     'rgba(255, 99, 132, 0.4)',
+                     'rgba(54, 162, 235, 0.4)',
+                     'rgba(255, 206, 86, 0.4)',
+                     'rgba(75, 192, 192, 0.4)',
+                     'rgba(153, 102, 255, 0.4)',
+                     'rgba(255, 159, 64, 0.4)',
+                      'rgba(255, 99, 132, 0.4)',
+                     'rgba(54, 162, 235, 0.4)',
+                     'rgba(255, 206, 86, 0.4)',
+                     'rgba(75, 192, 192, 0.4)',
+                      'rgba(255, 99, 132, 0.4)',
+                     'rgba(54, 162, 235, 0.4)',
+                     'rgba(255, 206, 86, 0.4)',
+                     'rgba(75, 192, 192, 0.4)',
+              
+                  ],
+                  borderColor: [
+                     'rgba(255, 99, 132, 1)',
+                     'rgba(54, 162, 235, 1)',
+                     'rgba(255, 206, 86, 1)',
+                     'rgba(75, 192, 192, 1)',
+                     'rgba(153, 102, 255, 1)',
+                     'rgba(255, 159, 64, 1)'
+                  ],
+                  borderWidth: 1
+                  }]
+                  },
+                  options: {
+                  scales: true
+                  }
+                  });
+                  </script>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Suppliers</h5>
+                
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="myChart10" ></canvas>
+
+    <script>
+var ctx = document.getElementById('myChart10').getContext('2d');
+var myChart10 = new Chart(ctx, {
+type: 'polarArea',
+data: {
+labels: {{ Suppliers | safe }},
+datasets: [{
+   label: 'Suppliers',
+   data: {{ salesbysuppliersale | safe }},
+   backgroundColor: [
+       'rgba(255, 99, 132, 0.4)',
+       'rgba(54, 162, 235, 0.4)',
+       'rgba(255, 206, 86, 0.4)',
+       'rgba(75, 192, 192, 0.4)',
+       'rgba(153, 102, 255, 0.4)',
+       'rgba(255, 159, 64, 0.4)'
+   ],
+   borderColor: [
+       'rgba(255, 99, 132, 1)',
+       'rgba(54, 162, 235, 1)',
+       'rgba(255, 206, 86, 1)',
+       'rgba(75, 192, 192, 1)',
+       'rgba(153, 102, 255, 1)',
+       'rgba(255, 159, 64, 1)'
+   ],
+   borderWidth: 1
+}]
+},
+options: {
+scales: false
+}
+});
+</script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- new added charts -->
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <div class="card ">
+              <div class="card-header">
+                <h4 class="card-title">Latest Orders</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table tablesorter " id="">
+                    <thead class=" text-primary">
+                      <tr>
+                        <th>Order Date</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Price</th>
+                        <th>Order Status</th>
+                      </tr>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      
+                      <tr>
+                        {% for i in LatestOrder0 %}
+                        <td>{{i}}</td>
+                        {% endfor %}
+                        </tr>
+                      <tr>
+                        {% for i in LatestOrder1 %}
+                        <td>{{i}}</td>
+                        {% endfor %}
+                        </tr>
+                      <tr>
+                        {% for i in LatestOrder2 %}
+                        <td>{{i}}</td>
+                        {% endfor %}
+                        </tr>
+                      <tr>
+                        {% for i in LatestOrder3 %}
+                        <td>{{i}}</td>
+                        {% endfor %}
+                        </tr>
+                      <tr>
+                        {% for i in LatestOrder4 %}
+                        <td>{{i}}</td>
+                        {% endfor %}
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="card ">
+              <div class="card-header">
+                <h4 class="card-title"> Top 5 Employees</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table tablesorter " id="">
+                    <thead class=" text-primary">
+                      <tr>
+                        <th>Employee Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Sales</th>
+                      </tr>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <tr>
+                        {% for i in employee0 %}
+                        <td>{{i}}</td>
+                        {% endfor %}
+                        </tr>
+                      <tr>
+                        {% for i in employee1 %}
+                        <td>{{i}}</td>
+                        {% endfor %}
+                        </tr>
+                      <tr>
+                        {% for i in employee2 %}
+                        <td>{{i}}</td>
+                        {% endfor %}
+                        </tr>
+                      <tr>
+                        {% for i in employee3 %}
+                        <td>{{i}}</td>
+                        {% endfor %}
+                        </tr>
+                      <tr>
+                        {% for i in employee4 %}
+                        <td>{{i}}</td>
+                        {% endfor %}
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="container-fluid">
+          
+        </div>
+      </footer>
+    </div>
+  </div>
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header-title"> Sidebar Background</li>
+        <li class="adjustments-line">
+          <a href="javascript:void(0)" class="switch-trigger background-color">
+            <div class="badge-colors text-center">
+              <span class="badge filter badge-primary active" data-color="primary"></span>
+              <span class="badge filter badge-info" data-color="blue"></span>
+              <span class="badge filter badge-success" data-color="green"></span>
+            </div>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="adjustments-line text-center color-change">
+          <span class="color-label">LIGHT MODE</span>
+          <span class="badge light-badge mr-2"></span>
+          <span class="badge dark-badge ml-2"></span>
+          <span class="color-label">DARK MODE</span>
+        </li>
+        
+        
+      </ul>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="static/assets/js/core/jquery.min.js"></script>
+  <script src="static/assets/js/core/popper.min.js"></script>
+  <script src="static/assets/js/core/bootstrap.min.js"></script>
+  <script src="static/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chart JS -->
+  
+  <!--  Notifications Plugin    -->
+  <script src="static/assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="static/assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
+  <script src="static/assets/demo/demo.js"></script>
+  <script>
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+        $navbar = $('.navbar');
+        $main_panel = $('.main-panel');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+        sidebar_mini_active = true;
+        white_color = false;
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+
+
+        $('.fixed-plugin a').click(function(event) {
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .background-color span').click(function() {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data', new_color);
+          }
+
+          if ($main_panel.length != 0) {
+            $main_panel.attr('data', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data', new_color);
+          }
+        });
+
+        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            sidebar_mini_active = false;
+            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+          } else {
+            $('body').addClass('sidebar-mini');
+            sidebar_mini_active = true;
+            blackDashboard.showSidebarMessage('Sidebar mini activated...');
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+        });
+
+        $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (white_color == true) {
+
+            $('body').addClass('change-background');
+            setTimeout(function() {
+              $('body').removeClass('change-background');
+              $('body').removeClass('white-content');
+            }, 900);
+            white_color = false;
+          } else {
+
+            $('body').addClass('change-background');
+            setTimeout(function() {
+              $('body').removeClass('change-background');
+              $('body').addClass('white-content');
+            }, 900);
+
+            white_color = true;
+          }
+
+
+        });
+
+        $('.light-badge').click(function() {
+          $('body').addClass('white-content');
+        });
+
+        $('.dark-badge').click(function() {
+          $('body').removeClass('white-content');
+        });
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+  </script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "black-dashboard-free"
+      });
+  </script>
+</body>
+
+</html>
